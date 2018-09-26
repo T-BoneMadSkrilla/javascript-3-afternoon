@@ -29,6 +29,22 @@
   Call your class Employee and receive all the data in the constructor in the order listed above.
 */
 
+class Employee {
+
+    constructor(first_name, last_name, email, age){
+
+    this.first_name = first_name;
+    this.last_name = last_name;
+   this.email = email;
+   this.age = age;
+    }
+      makeWidget(){ return this.first_name + " " + this.last_name + " Widget"}
+}
+
+var tyler = new Employee("Tyler", "Eftink", "tyler.eftink@gmail.com", 25);
+tyler;
+tyler.makeWidget();
+
 //Code Here
 
 
@@ -49,6 +65,23 @@
   Call your new class Manager
 */
 
+class Manager {
+
+  constructor(first_name, last_name, email, age){
+
+  this.first_name = first_name;
+  this.last_name = last_name;
+  this.email = email;
+  this.age = age;
+  this.reports = [];
+  }
+    makeWidget(){ return this.first_name + " " + this.last_name + " Widget"};
+    hire(Employee){this.reports.push(Employee)};
+    fire(index){this.reports.splice(index,1)}
+}
+
+var manager1 = new Manager("Ricky", "Bobby", "rickybobby@microsoft", 350);
+manager1;
 //Code Here
 
 
@@ -75,7 +108,37 @@
   Call your new class ProgressiveManager
 */
 
-//Code Here
+//if(this.reports.length < 1){this.title = "Not a manager"};
+
+class ProgressiveManager {
+
+  constructor(first_name, last_name, email, age,){
+
+  this.first_name = first_name;
+  this.last_name = last_name;
+  this.email = email;
+  this.age = age;
+  this.reports = [];
+  this.title = "Not a manager";
+  this.bonus = 0;
+  }
+    makeWidget(){ return this.first_name + " " + this.last_name + " Widget"};
+    hire(Employee){this.reports.push(Employee);
+        for(let i = 0; i < this.reports.length; i++){
+        if(this.reports.length <= 3 && this.reports.length >= 1){this.title = "Barely Manager"};
+        if(this.reports.length <= 10 && this.reports.length >= 4){this.title = "Mostly Manager"};
+        if(this.reports.length <= 50 && this.reports.length >= 11){this.title = "Manager"};
+        if(this.reports.length <= 100 && this.reports.length >= 51){this.title = "Manager Plus"};
+        if(this.reports.length >= 101){this.title = "Bestest Manager"};
+      }
+    };
+    fire(index){
+          this.reports.splice(index,1);
+          this.bonus += 100; 
+    }
+   
+}//Code Here
+var progressiveDude = new ProgressiveManager("Not Ricky", "Not Bobby", "nottherightemailaddress", 500)
 
 
 
@@ -102,6 +165,24 @@
         - The anonymous function should decrease wear_and_tear_count by 10, and set needs_reboot to false
 */
 
-//Code Here
+class Machine {
+      constructor(){
+        this.widgets_made_count = 0;
+        this.wear_and_tear_count = 0;
+        this.needs_reboot = false;
+      }
+
+      makeWidgets(num){
+          this.widgets_made_count += num; 
+          this.wear_and_tear_count += (num/50);          
+      };
+
+
+
+      fixMachine(){this.needs_reboot = true;};
+      
+      
+      reboot(){return () => {if(this.needs_reboot = true){ this.wear_and_tear_count -= 10; this.needs_reboot = false;}}};
+}//Code Here
 
 
